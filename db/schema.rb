@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(version: 2020_02_23_004132) do
     t.string "password_digest"
     t.string "color"
     t.string "bio"
+    t.string "birthday"
+    t.string "location"
+    t.string "gender"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

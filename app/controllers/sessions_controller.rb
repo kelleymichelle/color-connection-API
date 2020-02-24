@@ -19,6 +19,7 @@ class SessionsController < ApplicationController
 
   def is_logged_in?
       if logged_in? && current_user
+        # byebug
         render json: {
           logged_in: true,
           user: current_user
