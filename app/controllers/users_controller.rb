@@ -71,7 +71,7 @@ private
   end
 
   def user_detail_params
-    params.require(:userInfo).permit(:birthday, :gender, :location)
+    params.require(:userInfo).permit(:birthday, :gender, :location, :bio)
     # params.require(:userInfo).permit(:birthday, :gender, :location)
   end
 
