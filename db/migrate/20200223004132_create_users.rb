@@ -10,6 +10,9 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :location
       t.string :gender
       t.string :zodiac
+      t.string :image
+      t.string :status
+
 
       t.timestamps
     end

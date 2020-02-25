@@ -58,3 +58,5 @@ gem "bcrypt", "~> 3.1"
 gem "rack-cors", "~> 1.1"
 
 gem 'zodiac'
+
+gem 'cloudinary'

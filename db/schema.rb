@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2020_02_23_004132) do
     t.string "location"
     t.string "gender"
     t.string "zodiac"
+    t.string "image"
+    t.string "status"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

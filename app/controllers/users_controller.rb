@@ -60,6 +60,15 @@ def show
     render json: user
   end
 
+  def upload_image
+    byebug
+    user = User.find_by(id: params[:id])
+    img = Cloudinary::Uploader.upload(params[:file])
+    user_img = img["url"]
+    user.image = user_img
+    user.save!
+  end
+
 private
   
   def user_params
