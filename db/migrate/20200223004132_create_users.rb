@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :birthday
       t.string :location
       t.string :gender
+      t.string :zodiac
 
       t.timestamps
     end

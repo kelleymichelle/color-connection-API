@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_02_23_004132) do
     t.string "birthday"
     t.string "location"
     t.string "gender"
+    t.string "zodiac"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

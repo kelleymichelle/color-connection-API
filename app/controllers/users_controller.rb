@@ -52,6 +52,7 @@ def show
         set_user_color(user, colorAnswer)
       elsif params[:userInfo]
         user.update(user_detail_params)
+        user.zodiac_setter
         user.save!
       end
     # user.save!

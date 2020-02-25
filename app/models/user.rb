@@ -1,3 +1,5 @@
+require 'zodiac'
+
 class User < ApplicationRecord
   has_secure_password
 
@@ -10,6 +12,15 @@ class User < ApplicationRecord
 
   def setting_password?
     password || password_confirmation
+  end
+
+  def zodiac_setter
+    bday = self.birthday.split("/")
+    m = bday[0].to_i
+    d = bday[1].to_i
+    y = bday[2].to_i
+    self.zodiac = Date.new(y, m, d).zodiac_sign
+    # self.save!
   end
 
 end
