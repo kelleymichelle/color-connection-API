@@ -61,12 +61,14 @@ def show
   end
 
   def upload_image
-    byebug
+    # byebug
     user = User.find_by(id: params[:id])
     img = Cloudinary::Uploader.upload(params[:file])
     user_img = img["url"]
     user.image = user_img
     user.save!
+
+    render json: user
   end
 
 private
@@ -80,7 +82,7 @@ private
   end
 
   def user_detail_params
-    params.require(:userInfo).permit(:birthday, :gender, :location, :bio)
+    params.require(:userInfo).permit(:birthday, :gender, :location, :bio, :status)
     # params.require(:userInfo).permit(:birthday, :gender, :location)
   end
 
