@@ -71,6 +71,10 @@ def show
     render json: user
   end
 
+  def follow
+    byebug
+  end
+
 private
   
   def user_params

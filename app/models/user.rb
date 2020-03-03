@@ -30,4 +30,20 @@ class User < ApplicationRecord
     # self.save!
   end
 
+  def following?(user)
+    self.following.include?(user)
+  end
+
+  def followed_by?(user)
+    self.followers.include?(user)
+  end
+
+  def follow(user)
+    self.following << user
+  end
+
+  def unfollow(user)
+    self.following.delete(user)
+  end
+
 end
