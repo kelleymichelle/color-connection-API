@@ -10,6 +10,13 @@ class User < ApplicationRecord
 
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
+  has_many :following_users, foreign_key: "follower_id", dependent: :destroy
+  has_many :follower_users, class_name: "FollowingUser", foreign_key: "following_id", dependent: :destroy
+  has_many :followers, class_name: "User", through: :follower_users, foreign_key: "follower_id"
+  has_many :following, class_name: "User", through: :following_users, foreign_key: "following_id"
+
+  has_many :notifications
+
   def setting_password?
     password || password_confirmation
   end

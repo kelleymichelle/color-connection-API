@@ -1,0 +1,2 @@
+class FollowingUsersController < ApplicationController
+end
