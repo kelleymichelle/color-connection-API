@@ -17,7 +17,8 @@ class MessagesController < ApplicationController
     if message.save
       render json: {
         status: :created,
-        message: message
+        message: message,
+        conversation: Message.conversation(current_user, recipient)
       }
     else
       render json: {

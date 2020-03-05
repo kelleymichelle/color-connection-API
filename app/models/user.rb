@@ -16,7 +16,7 @@ class User < ApplicationRecord
   has_many :following, class_name: "User", through: :following_users, foreign_key: "following_id"
 
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
-  has_many :recieved_messaged, class_name: "Message", foreign_key: "reciever_id", dependent: :destroy
+  has_many :recieved_messages, class_name: "Message", foreign_key: "reciever_id", dependent: :destroy
 
   has_many :notifications
 
@@ -49,6 +49,21 @@ class User < ApplicationRecord
 
   def unfollow(user)
     self.following.delete(user)
+  end
+
+
+  def group_all_messages
+    messages_by_user = {}
+    messages = (self.recieved_messages + self.sent_messages).sort{ |a,b| b.created_at <=> a.created_at }
+    messages.each do |msg|
+        user_to_group = msg.reciever == self ? msg.sender : msg.reciever
+        if messages_by_user[user_to_group]
+            messages_by_user[user_to_group] << msg
+        else
+            messages_by_user[user_to_group] = [msg]
+        end
+    end
+    messages_by_user
   end
 
 end
