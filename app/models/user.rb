@@ -22,12 +22,14 @@ class User < ApplicationRecord
   end
 
   def zodiac_setter
-    bday = self.birthday.split("/")
-    m = bday[0].to_i
-    d = bday[1].to_i
-    y = bday[2].to_i
-    self.zodiac = Date.new(y, m, d).zodiac_sign
+    if self.birthday 
+      bday = self.birthday.split("/")
+      m = bday[0].to_i
+      d = bday[1].to_i
+      y = bday[2].to_i
+      self.zodiac = Date.new(y, m, d).zodiac_sign
     # self.save!
+    end
   end
 
   def following?(user)

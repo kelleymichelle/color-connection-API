@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # before_action :current_user
+
   def index
     @users = User.all
     if @users
@@ -33,7 +35,9 @@ def show
       login!
       render json: {
         status: :created,
-        user: @user
+        user: @user,
+        following: @user.following,
+        followers: @user.followers
       }
     else 
       render json: {
@@ -72,7 +76,14 @@ def show
   end
 
   def follow
-    byebug
+    # byebug
+
+    user = User.find_by(id: params[:currentUser])
+    liked_user = User.find(params[:id])
+
+    user.following?(liked_user) ? liked_user.followers.delete(user) : user.follow(liked_user)
+
+    render json: user, include: [:followers, :following]
   end
 
 private

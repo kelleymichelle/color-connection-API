@@ -7,7 +7,9 @@ class SessionsController < ApplicationController
         login!
         render json: {
           logged_in: true,
-          user: @user
+          user: @user,
+          following: @user.following,
+          followers: @user.followers
         }
       else
         render json: { 
@@ -22,7 +24,9 @@ class SessionsController < ApplicationController
         # byebug
         render json: {
           logged_in: true,
-          user: current_user
+          user: current_user,
+          following: current_user.following,
+          followers: current_user.followers
         }
       else
         render json: {
