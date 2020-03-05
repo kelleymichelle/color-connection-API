@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   post 'users/:id/follow', to: 'users#follow'
 
+  post 'messages/:id/new', to: 'messages#create'
+
 
   # post 'users/:id/follow' => 'users#follow', as: "follow_user"
   # get 'users/:id/followers' => 'users#followers', as: "users_following"
