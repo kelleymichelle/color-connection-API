@@ -4,6 +4,10 @@ class MessagesController < ApplicationController
 
   end
 
+  def show
+    recipient = User.find_by(id: params[:id])
+  end
+
   def create
     # byebug
     recipient = User.find_by(id: params[:id])
