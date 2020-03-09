@@ -17,9 +17,9 @@ class UsersController < ApplicationController
 end
 def show
     # byebug
-    current_user = params[:currentUser] ? User.find_by(id: params[:currentUser]) : null
+   params[:currentUser] ? current_user = User.find_by(id: params[:currentUser]) : nil
     @user = User.find(params[:id])
-    conversation = current_user ? Message.conversation(current_user, @user) : null
+    current_user ? conversation = Message.conversation(current_user, @user) : conversation = []
    if @user
       render json: {
         user: @user,

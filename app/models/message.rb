@@ -7,7 +7,7 @@ class Message < ApplicationRecord
 
 
   def self.conversation(user1, user2)
-    where(sender_id: [user1.id, user2.id], reciever_id: [user1.id, user2.id]).order(created_at: :desc)
+    where(sender_id: [user1.id, user2.id], reciever_id: [user1.id, user2.id]).order(created_at: :asc)
   end
 
 end

@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
 
   def inbox
-
+    user = User.find_by(id: params[:id])
+    byebug
   end
 
   def show
