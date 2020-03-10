@@ -87,6 +87,8 @@ def show
 
     user.following?(liked_user) ? liked_user.followers.delete(user) : user.follow(liked_user)
 
+    user.following?(liked_user) ? liked_user.notify("You have a new like!") : nil
+
     render json: user, include: [:followers, :following]
   end
 

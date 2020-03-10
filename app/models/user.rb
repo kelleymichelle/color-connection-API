@@ -66,6 +66,11 @@ class User < ApplicationRecord
     messages_by_user
   end
 
+  def notify(content)
+    notification = Notification.new(user: self, content: content)
+    notification.save!
+  end
+
   def new_notifications
     self.notifications.select{ |n| !n.viewed }.sort{ |a,b| a.created_at <=> b.created_at }
   end

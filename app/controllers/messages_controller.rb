@@ -22,6 +22,7 @@ class MessagesController < ApplicationController
     message = Message.new(content: content)
     message.sender = current_user
     message.reciever = recipient
+    recipient.notify("#{current_user.name} sent you a new message.")
     # byebug
     if message.save
       render json: {
