@@ -2,7 +2,11 @@ class MessagesController < ApplicationController
 
   def inbox
     user = User.find_by(id: params[:id])
-    byebug
+    convo = user.group_all_messages
+    # byebug
+    render json: {
+      conversations: convo.values
+    }
   end
 
   def show

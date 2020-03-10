@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :messages
-  resources :notifications
+  # resources :notifications
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   post '/login', to: 'sessions#create'
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post 'messages/:id/new', to: 'messages#create'
 
   get 'users/:id/inbox', to: 'messages#inbox'
+
+  get 'users/:id/notifications', to: 'notifications#index'
 
 
   # post 'users/:id/follow' => 'users#follow', as: "follow_user"
