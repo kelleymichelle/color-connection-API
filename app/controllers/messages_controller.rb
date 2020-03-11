@@ -19,21 +19,29 @@ class MessagesController < ApplicationController
     current_user = User.find_by(id: params[:data][:currentUser][:id])
     content = params[:data][:content]
 
-    message = Message.new(content: content)
-    message.sender = current_user
-    message.reciever = recipient
-    recipient.notify("#{current_user.name} sent you a new message.")
-    # byebug
-    if message.save
-      render json: {
-        status: :created,
-        message: message,
-        conversation: Message.conversation(current_user, recipient)
-      }
+    if current_user != recipient
+      message = Message.new(content: content)
+      message.sender = current_user
+      message.reciever = recipient
+      recipient.notify("#{current_user.name} sent you a new message.")
+      # byebug
+      if message.save
+        render json: {
+          status: :created,
+          message: message,
+          conversation: Message.conversation(current_user, recipient)
+        }
+      else
+        render json: {
+          status: 500,
+          errors: message.errors.full_messages
+        }  
+      end
+
     else
       render json: {
         status: 500,
-        errors: message.errors.full_messages
+        errors: "You cannot send messages to yourself"
       }  
     end
   end

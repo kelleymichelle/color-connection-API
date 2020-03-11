@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   get 'users/:id/inbox', to: 'messages#inbox'
 
-  get 'users/:id/notifications', to: 'notifications#index'
+  get 'users/:id/notifications', to: 'notifications#new_notifications_by_user'
+
+  get 'users/search/color/:color', to: 'users#color_token_search'
+
+  get 'users/search/zodiac/:sign', to: 'users#zodiac_search'
 
 
   # post 'users/:id/follow' => 'users#follow', as: "follow_user"

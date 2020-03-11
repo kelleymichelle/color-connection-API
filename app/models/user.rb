@@ -83,4 +83,16 @@ class User < ApplicationRecord
     Notification.unseen_by(self)
   end
 
+  def self.sort_by_color_token(color)
+    User.where(color: '#{color}')
+  end
+
+  def self.sort_by_zodiac(sign)
+    User.where(zodiac: '#{sign}')
+  end
+
+  # def self.sort_by_keyword(keyword)
+  #   #write method that will iterate through user keyword array and return users that contain specific keyword
+  # end
+
 end

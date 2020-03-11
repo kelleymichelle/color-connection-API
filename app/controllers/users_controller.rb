@@ -92,6 +92,18 @@ def show
     render json: user, include: [:followers, :following]
   end
 
+  def color_token_search
+    # byebug
+    color = params[:color]
+    users = User.sort_by_color_token(color)
+
+    render json: users
+  end
+
+  def zodiac_search
+    byebug
+  end
+
 private
   
   def user_params
