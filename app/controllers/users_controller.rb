@@ -118,7 +118,7 @@ private
   end
 
   def user_detail_params
-    params.require(:userInfo).permit(:birthday, :gender, :location, :bio, :status, :animal)
+    params.require(:userInfo).permit(:birthday, :gender, :location, :bio, :status, :animal, :loveLanguage)
     # params.require(:userInfo).permit(:birthday, :gender, :location)
   end
 
