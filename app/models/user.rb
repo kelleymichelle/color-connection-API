@@ -84,11 +84,11 @@ class User < ApplicationRecord
   end
 
   def self.sort_by_color_token(color)
-    User.where(color: '#{color}')
+    User.where(color: color)
   end
 
   def self.sort_by_zodiac(sign)
-    User.where(zodiac: '#{sign}')
+    User.where(zodiac: sign)
   end
 
   # def self.sort_by_keyword(keyword)

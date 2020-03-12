@@ -101,7 +101,10 @@ def show
   end
 
   def zodiac_search
-    byebug
+    zodiac = params[:sign]
+    users = User.sort_by_zodiac(zodiac)
+
+    render json: users
   end
 
 private
